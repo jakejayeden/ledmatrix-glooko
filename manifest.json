@@ -1,23 +1,17 @@
 {
   "id": "glooko",
   "name": "Glooko",
-  "version": "0.1.0",
+  "version": "0.3.3",
   "author": "jakejayeden",
-  "description": "Displays Glooko CGM and pump data on LEDMatrix with prominent data-age warnings.",
+  "description": "Displays the latest glucose, IOB and Omnipod mode available from Glooko, with freshness information and glucose history.",
   "entry_point": "manager.py",
   "class_name": "GlookoPlugin",
   "category": "health",
-  "tags": ["glooko", "cgm", "glucose", "diabetes", "omnipod"],
+  "tags": ["glooko", "cgm", "glucose", "omnipod"],
   "display_modes": ["glooko"],
-  "versions": [{
-    "version": "0.1.0",
-    "released": "2026-10-23",
-    "ledmatrix_min_version": "2.0.0",
-    "notes": "Initial preview: glucose, trend, data age, IOB and pump mode."
-  }],
-  "last_updated": "2026-10-23",
+  "last_updated": "2026-10-24",
   "verified": false,
-  "screenshot": "",
   "config_schema": "config_schema.json",
-  "compatible_versions": [">=2.0.0"]
+  "compatible_versions": [">=3.8.0"],
+  "release_notes": "Adds selectable 3/6/12/24-hour graph history, integrates the Colourise graph setting into the installable schema, fixes trend-arrow placement, and documents GitHub/Web UI deployment and one-time Pi prerequisites."
 }
