@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Glooko Display",
+  "properties": {
+    "enabled": {"type": "boolean", "default": true},
+    "units": {"type": "string", "enum": ["mmol/L", "mg/dL"], "default": "mmol/L"},
+    "refresh_seconds": {"type": "integer", "minimum": 60, "maximum": 3600, "default": 300},
+    "stale_minutes": {"type": "integer", "minimum": 5, "maximum": 360, "default": 30},
+    "history_hours": {"type": "integer", "minimum": 1, "maximum": 12, "default": 3},
+    "display_duration": {"type": "number", "minimum": 1, "maximum": 300, "default": 15}
+  },
+  "required": ["enabled"],
+  "additionalProperties": false
+}
