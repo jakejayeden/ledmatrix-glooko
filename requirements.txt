@@ -1,0 +1,2 @@
+glooko-reader @ git+https://github.com/spamsch/glooko-reader.git
+requests>=2.31
