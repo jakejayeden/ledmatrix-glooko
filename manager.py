@@ -57,8 +57,10 @@ class GlookoPlugin(BasePlugin):
         units_text="mg/dL" if self.units=="mg/dL" else "mmol/L"; dm.draw_text(units_text,x=1,y=8,color=muted,font=font)
         freshness="NO TIME" if glucose_age is None else (f"STALE {glucose_age}m" if glucose_stale else f"{glucose_age}m")
         units_w=dm.get_text_width(units_text,font); dm.draw_text(freshness,x=units_w+5,y=8,color=stale_red if glucose_stale else muted,font=font)
-        iob_text="IOB --" if snap.iob is None else f"IOB {snap.iob:.2f}u"; iob_age=snap.iob_age_minutes(); iob_stale=iob_age is None or iob_age>=self.stale_minutes
-        iob_w=dm.get_text_width(iob_text,font); dm.draw_text(iob_text,x=max(50,width-iob_w-1),y=0,color=stale_red if iob_stale else white,font=font)
+        # IOB is contextual information from Glooko and may legitimately be older than
+        # the latest CGM reading. Keep it neutral so red is reserved for stale CGM.
+        iob_text="IOB --" if snap.iob is None else f"IOB {snap.iob:.2f}u"
+        iob_w=dm.get_text_width(iob_text,font); dm.draw_text(iob_text,x=max(50,width-iob_w-1),y=0,color=white,font=font)
         pump=(snap.pump_mode or "--").upper()[:7]; pump_w=dm.get_text_width(pump,font); dm.draw_text(pump,x=max(70,width-pump_w-1),y=8,color=muted,font=font)
         points=list(snap.points or [])
         if len(points)>=2 and hasattr(dm,"draw"):
