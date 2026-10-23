@@ -1,0 +1,23 @@
+{
+  "id": "glooko",
+  "name": "Glooko",
+  "version": "0.1.0",
+  "author": "jakejayeden",
+  "description": "Displays Glooko CGM and pump data on LEDMatrix with prominent data-age warnings.",
+  "entry_point": "manager.py",
+  "class_name": "GlookoPlugin",
+  "category": "health",
+  "tags": ["glooko", "cgm", "glucose", "diabetes", "omnipod"],
+  "display_modes": ["glooko"],
+  "versions": [{
+    "version": "0.1.0",
+    "released": "2026-10-23",
+    "ledmatrix_min_version": "2.0.0",
+    "notes": "Initial preview: glucose, trend, data age, IOB and pump mode."
+  }],
+  "last_updated": "2026-10-23",
+  "verified": false,
+  "screenshot": "",
+  "config_schema": "config_schema.json",
+  "compatible_versions": [">=2.0.0"]
+}
