@@ -3,12 +3,15 @@
   "type": "object",
   "title": "Glooko Display",
   "properties": {
-    "enabled": {"type": "boolean", "default": true},
-    "units": {"type": "string", "enum": ["mmol/L", "mg/dL"], "default": "mmol/L"},
-    "refresh_seconds": {"type": "integer", "minimum": 60, "maximum": 3600, "default": 300},
-    "stale_minutes": {"type": "integer", "minimum": 5, "maximum": 360, "default": 30},
-    "history_hours": {"type": "integer", "minimum": 1, "maximum": 12, "default": 3},
-    "display_duration": {"type": "number", "minimum": 1, "maximum": 300, "default": 15}
+    "enabled": {"type": "boolean", "title": "Enabled", "default": true},
+    "email": {"type": "string", "title": "Glooko email", "x-secret": true},
+    "password": {"type": "string", "title": "Glooko password", "x-secret": true},
+    "units": {"type": "string", "title": "Glucose units", "enum": ["mmol/L", "mg/dL"], "default": "mmol/L"},
+    "refresh_seconds": {"type": "integer", "title": "Refresh interval (seconds)", "minimum": 60, "maximum": 3600, "default": 300},
+    "stale_minutes": {"type": "integer", "title": "Stale after (minutes)", "minimum": 1, "maximum": 360, "default": 30},
+    "history_hours": {"type": "integer", "title": "Graph history", "description": "Hours of Glooko CGM history shown in the graph.", "enum": [3, 6, 12, 24], "default": 6},
+    "colorize_graph": {"type": "boolean", "title": "Colourise graph", "description": "Colour graph segments by mmol/L: 3.9 and below yellow, 4.0–9.9 green, and 10.0 and above red.", "default": false},
+    "display_duration": {"type": "integer", "title": "Display duration (seconds)", "minimum": 1, "maximum": 300, "default": 10}
   },
   "required": ["enabled"],
   "additionalProperties": false
