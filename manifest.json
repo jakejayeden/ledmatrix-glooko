@@ -1,7 +1,7 @@
 {
   "id": "glooko",
   "name": "Glooko",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "author": "jakejayeden",
   "description": "Displays the latest glucose, IOB and Omnipod mode available from Glooko, with freshness information and glucose history.",
   "entry_point": "manager.py",
@@ -13,5 +13,5 @@
   "verified": false,
   "config_schema": "config_schema.json",
   "compatible_versions": [">=3.8.0"],
-  "release_notes": "Adds selectable 3/6/12/24-hour graph history, integrates the Colourise graph setting into the installable schema, fixes trend-arrow placement, and documents GitHub/Web UI deployment and one-time Pi prerequisites."
+  "release_notes": "Keeps IOB text neutral regardless of its source-record age so red headline text is reserved for stale glucose. Graph range colours remain unchanged when Colourise graph is enabled."
 }
