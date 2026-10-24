@@ -1,7 +1,7 @@
 {
   "id": "glooko",
   "name": "Glooko",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "author": "jakejayeden",
   "description": "Displays the latest glucose, IOB and Omnipod mode available from Glooko, with freshness information and glucose history.",
   "entry_point": "manager.py",
@@ -13,5 +13,5 @@
   "verified": false,
   "config_schema": "config_schema.json",
   "compatible_versions": [">=3.8.0"],
-  "release_notes": "Keeps IOB text neutral regardless of its source-record age so red headline text is reserved for stale glucose. Graph range colours remain unchanged when Colourise graph is enabled."
+  "release_notes": "Reduces display flicker by composing each complete Glooko frame in memory before the single display update, instead of clearing the physical display before repainting."
 }
