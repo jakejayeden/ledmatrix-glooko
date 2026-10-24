@@ -1,6 +1,7 @@
 """LEDMatrix Glooko plugin for a 128x32 panel."""
 import logging
 import time
+from PIL import Image, ImageDraw
 from src.plugin_system.base_plugin import BasePlugin
 from glooko_provider import GlookoProvider
 logging.getLogger("glooko.client").setLevel(logging.WARNING)
@@ -47,7 +48,11 @@ class GlookoPlugin(BasePlugin):
             dm.draw.line((x2,y2,x2-2,y2-2),fill=color,width=1); dm.draw.line((x2,y2,x2-2,y2+2),fill=color,width=1)
     def display(self,force_clear=False):
         if self.snapshot is None:return False
-        dm=self.display_manager; snap=self.snapshot; dm.clear(); width=getattr(dm,"width",128); height=getattr(dm,"height",32)
+        dm=self.display_manager; snap=self.snapshot; width=getattr(dm,"width",128); height=getattr(dm,"height",32)
+        # Build the complete next frame in memory. Do not call dm.clear(): on a
+        # physical RGB matrix that can expose a black frame before repainting,
+        # which appears as a very brief blink on repeated display() calls.
+        dm.image=Image.new("RGB",(width,height),(0,0,0)); dm.draw=ImageDraw.Draw(dm.image); dm.draw.fontmode="1"
         font=getattr(dm,"bdf_5x7_font",None) or getattr(dm,"small_font",None)
         white=(255,255,255); muted=(150,150,150); stale_red=(255,0,0)
         glucose=self._display_glucose(snap.glucose_mmol); glucose_age=snap.age_minutes(); glucose_stale=glucose_age is None or glucose_age>=self.stale_minutes
